@@ -1,0 +1,4 @@
+drop_column("users", "gender")
+drop_column("users", "location")
+drop_column("users", "website")
+drop_column("users", "gravatar")

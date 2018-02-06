@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Buffalo - Go Hackathon Starter</title>
+    <%= stylesheetTag("application.css") %>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="<%= authenticity_token %>" />
+
+  </head>
+  <body>
+
+  <div class="container">
+	  <%= partial("partials/header.html") %>
+	  <%= partial("partials/flash.html") %>
+	  <%= yield %>
+	  <%= partial("partials/footer.html") %>
+  </div>
+
+    <%= javascriptTag("application.js") %>
+  </body>
+</html>

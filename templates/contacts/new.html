@@ -1,0 +1,11 @@
+<div id="main" class="container">
+  <div class="page-header">
+	  <h3> Contact Form </h3>
+  </div>
+    <div id="form">
+	    <%= form_for(contact, {action: contactsPath(), method: "POST", style:"width:75%"}) { %>
+	    <%= partial("contacts/form.html") %>
+	    <a href="<%= contactsPath() %>" class="btn btn-warning" data-confirm="Are you sure?">Cancel</a>
+	    <% } %>
+    </div>
+</div>

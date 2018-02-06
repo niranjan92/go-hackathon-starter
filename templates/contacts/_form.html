@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-4"> <b>Name</b> </div>
+  <div class="col-md-8">
+    <%= f.InputTag("Name", {hide_label:true}) %>
+  </div>
+</div>
+<div class="row">
+	<div class="col-md-4"> <b>Email</b> </div>
+	<div class="col-md-8">
+		<%= f.InputTag("Email", {hide_label:true}) %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4"> <b>Description</b> </div>
+	<div class="col-md-8">
+      <%= f.TextArea("Description", {hide_label: true, rows:5})%>
+	</div>
+</div>
+<button class="btn btn-success" role="submit">Save</button>

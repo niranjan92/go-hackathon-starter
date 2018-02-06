@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>Contacts</h1>
+</div>
+<ul class="list-unstyled list-inline">
+  <li><a href="<%= newContactsPath() %>" class="btn btn-primary">Create New Contact</a></li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+  <th>Name</th>
+    <th>Email</th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (contact) in contacts { %>
+      <tr>
+      <td><%= contact.Name %></td>
+        <td><%= contact.Email %></td>
+        <td><%= contact.Description %></td>
+        <td>
+          <div class="pull-right">
+            <a href="<%= contactPath({ contact_id: contact.ID }) %>" class="btn btn-info">View</a>
+            <a href="<%= editContactPath({ contact_id: contact.ID }) %>" class="btn btn-warning">Edit</a>
+            <a href="<%= contactPath({ contact_id: contact.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginator(pagination) %>
+</div>

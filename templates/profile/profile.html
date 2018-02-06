@@ -1,0 +1,6 @@
+<div class="page-header"><h3>Profile Information</h3></div>
+<div>
+  <%= form_for(current_user, {action: "/account/profile", method: "POST", class:"form-horizontal"}) { %>
+    <%= partial("profile/profile_form.html") %>
+  <% } %>
+</div>

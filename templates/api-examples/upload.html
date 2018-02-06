@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="page-header"><h2><i class="fa fa-upload"></i>File Upload</h2></div>
+  <div class="btn-group btn-group-justified">
+    <a class="btn btn-success" href="https://godoc.org/github.com/gobuffalo/buffalo"
+       target="_blank"><i class="fa fa-book"></i>Buffalo Documentation</a>
+    <a class="btn btn-success" href="https://gobuffalo.io/docs/file-uploads"
+       target="_blank"><i class="fa fa-laptop"></i>Customize File Upload</a>
+  </div>
+  <h3>File Upload Form</h3>
+  <div class="row">
+    <%= form_for(widget, {action: widgetsPath(), method: "POST"}) { %>
+    <%= f.InputTag("Name") %>
+    <%= f.FileTag("Uploadfile") %>
+    <button class="btn btn-success" role="submit">Save</button>
+    <% } %>
+  </div>
+</div>

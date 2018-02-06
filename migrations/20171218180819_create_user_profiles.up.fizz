@@ -1,0 +1,11 @@
+create_table("user_profiles", func(t) {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("name", "string", {})
+	t.Column("provider", "string", {})
+	t.Column("provider_id", "string", {})
+	t.Column("email", "string", {})
+	t.Column("data", "string", {})
+	t.Column("user_id", "uuid", {})
+})
+
+add_index("user_profiles", ["provider", "provider_id"], {"unique": true})

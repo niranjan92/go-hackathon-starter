@@ -1,0 +1,6 @@
+- id: "contact.created.success"
+  translation: "Contact was successfully created."
+- id: "contact.updated.success"
+  translation: "Contact was successfully updated."
+- id: "contact.destroyed.success"
+  translation: "Contact was successfully destroyed."

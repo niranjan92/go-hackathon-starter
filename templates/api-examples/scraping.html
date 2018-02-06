@@ -1,0 +1,28 @@
+<div class="container">
+  <h2><i class="fa"></i>Scraping Example</h2>
+  <div class="btn-group btn-group-justified">
+    <a class="btn btn-primary" href="https://github.com/yhat/scrape"
+       target="_blank"><i class="fa fa-check-square-o"></i>Getting
+      Started
+    </a>
+    <a class="btn btn-primary" href="https://godoc.org/github.com/yhat/scrape"
+       target="_blank"><i class="fa fa-file-text-o"></i>Documentation</a>
+  </div>
+  <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Trending articles on ycombinator</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            <%= for (article) in articles { %>
+            <li><a href="<%= article.Href %>"><%= article.Text %></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
