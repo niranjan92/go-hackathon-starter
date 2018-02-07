@@ -86,8 +86,9 @@ func App() *buffalo.App {
 		api.GET("/scraping", ScrapingHandler)
 
 		cr := &ContactsResource{&buffalo.BaseResource{}}
+		app.Middleware.Skip(Authorize, cr.New)
+		app.Middleware.Skip(Authorize, cr.Create)
 		app.Resource("/contacts", cr)
-		//app.Middleware.Skip(Authorize, cr.New)
 		app.Resource("/widgets", WidgetsResource{})
 	}
 
