@@ -1,4 +1,4 @@
-add_column("users", "gender", "string", {"default":""})
-add_column("users", "location", "string", {"default":""})
-add_column("users", "website", "string", {"default":""})
-add_column("users", "gravatar", "string", {"default":""})
+add_column("users", "gender", "string", {"default":"", "null": true})
+add_column("users", "location", "string", {"default":"", "null": true})
+add_column("users", "website", "string", {"default":"", "null": true})
+add_column("users", "gravatar", "string", {"default":"", "null": true})

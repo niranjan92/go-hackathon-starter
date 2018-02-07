@@ -2,12 +2,11 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 10.1
+-- Dumped from database version 9.5.10
+-- Dumped by pg_dump version 9.5.10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -86,16 +85,16 @@ ALTER TABLE user_profiles OWNER TO postgres;
 
 CREATE TABLE users (
     id uuid NOT NULL,
-    name character varying(255) NOT NULL,
+    name character varying(255),
     email character varying(255),
     provider character varying(255) NOT NULL,
     provider_id character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    gender character varying(255) DEFAULT ''::character varying NOT NULL,
-    location character varying(255) DEFAULT ''::character varying NOT NULL,
-    website character varying(255) DEFAULT ''::character varying NOT NULL,
-    gravatar character varying(255) DEFAULT ''::character varying NOT NULL
+    gender character varying(255) DEFAULT ''::character varying,
+    location character varying(255) DEFAULT ''::character varying,
+    website character varying(255) DEFAULT ''::character varying,
+    gravatar character varying(255) DEFAULT ''::character varying
 );
 
 
@@ -116,7 +115,7 @@ CREATE TABLE widgets (
 ALTER TABLE widgets OWNER TO postgres;
 
 --
--- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY contacts
@@ -124,7 +123,7 @@ ALTER TABLE ONLY contacts
 
 
 --
--- Name: user_profiles user_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: user_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY user_profiles
@@ -132,7 +131,7 @@ ALTER TABLE ONLY user_profiles
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY users
@@ -140,7 +139,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: widgets widgets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: widgets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY widgets
@@ -166,6 +165,16 @@ CREATE UNIQUE INDEX users_provider_provider_id_idx ON users USING btree (provide
 --
 
 CREATE UNIQUE INDEX version_idx ON schema_migration USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
