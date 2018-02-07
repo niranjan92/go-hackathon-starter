@@ -1,9 +1,7 @@
 # Welcome to Go Hackathon Starter!
 
 ## Motivation
-A common complaint for folks starting out with golang is no availabitliy of commonly available. 
-This project is heavily inspired by 
-TODO://
+A common complaint for folks starting out with golang is no availabitliy of commonly available. This project is heavily inspired by [hackathon starter](https://github.com/sahat/hackathon-starter) which is based on nodejs and express. Being a developer with both nodejs and Go experience, I found this missing in the Golang ecosystem. This project is a first step towards that direction.
 
 ## Getting Started
 
@@ -29,8 +27,9 @@ npm install
 # init go dependencies
 dep ensure
 
-# edit database.yml to conifgure database settings
-# create database
+# The first thing you need to do is open up the "database.yml" file and edit it 
+# to use the correct usernames, passwords, hosts, etc... that are appropriate for 
+# your environment. then create database
 buffalo db create -a
 
 # run migrations
@@ -40,17 +39,6 @@ buffalo db migrate
 buffalo dev
 
 ```
-
-### Database Setup
-The first thing you need to do is open up the "database.yml" file and edit it to use the correct usernames, passwords, hosts, etc... that are appropriate for your environment.
-
-### Create Your Databases
-Ok, so you've edited the "database.yml" file and started postgres, now Buffalo can create the databases in that file for you:
-
-	$ buffalo db create -a
-
-### Starting the Application
-	$ buffalo dev
 
 If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you should see a "Welcome to Go Hackathon Starter!" page.
 
@@ -64,7 +52,7 @@ If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you 
 ### new project build fails due to import failure
 - this is due to incorrect 
 
-TODO:
+**TODO:**
 - add tests and CI
 - add setup.sh to install replace imports with your directory names
 - Update Readme for better instructions to setup integrations for login and api-examples
@@ -72,14 +60,14 @@ TODO:
 - FACEBOOK - show list of friends
 - add profile pic / gravatar to profile age
 
-Good to do:
+**Good to do:**
 - delete account feature
 - add paypal test example
 - fix highlighted part for selected tab in nav
 - admin management console for users
 - add a simpler way to configure db. maybe using docker compose
 
-Maybe: 
+**Maybe:**
 - add examples for angular and react
 
 [Powered by Buffalo](http://gobuffalo.io)
