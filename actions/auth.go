@@ -24,13 +24,36 @@ func init() {
 	gothic.Store = App().SessionStore
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("You need to add .env file to enable authentications")
 	}
-	goth.UseProviders(
-		twitter.New(os.Getenv("TWITTER_CONSUMER_KEY"), os.Getenv("TWITTER_CONSUMER_SECRET"), "http://localhost:3000/auth/twitter/callback"),
-		facebook.New(os.Getenv("FACEBOOK_KEY"), os.Getenv("FACEBOOK_SECRET"), fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/facebook/callback")),
-		github.New(os.Getenv("GITHUB_KEY"), os.Getenv("GITHUB_SECRET"), fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/github/callback")),
-	)
+	var providers []goth.Provider
+
+	if os.Getenv("TWITTER_CONSUMER_KEY") != "" {
+		providers = append(providers,
+			twitter.New(
+				os.Getenv("TWITTER_CONSUMER_KEY"),
+				os.Getenv("TWITTER_CONSUMER_SECRET"),
+				"http://localhost:3000/auth/twitter/callback"))
+	}
+
+	if os.Getenv("FACEBOOK_KEY") != "" {
+		providers = append(providers,
+			facebook.New(
+				os.Getenv("FACEBOOK_KEY"),
+				os.Getenv("FACEBOOK_SECRET"),
+				fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/facebook/callback")))
+	}
+
+	if os.Getenv("GITHUB_KEY") != "" {
+		providers = append(providers,
+			github.New(
+				os.Getenv("GITHUB_KEY"),
+				os.Getenv("GITHUB_SECRET"),
+				fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/github/callback")))
+	}
+
+	goth.UseProviders(providers[:]...)
+
 }
 
 func SetCurrentUser(next buffalo.Handler) buffalo.Handler {
