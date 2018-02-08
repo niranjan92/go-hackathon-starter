@@ -42,6 +42,22 @@ buffalo dev
 
 If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you should see a "Welcome to Go Hackathon Starter!" page.
 
+## Benchmarks
+Go is pretty fast and focus should be on adding new features quickly. But for those of you looking for benchmarks -
+Tested with `wrk` on home page and was able to run at ~370 requests per second with average latency of ~3 ms. This way more than
+what a budding project needs. :)
+```
+Niranjans-MacBook-Air:hackathon-starter niranjan$ ~/go/bin/wrk -t1 -c1 -d20s http://localhost:3000
+Running 20s test @ http://localhost:3000
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.02ms    2.86ms  48.97ms   92.86%
+    Req/Sec   375.58     97.42   554.00     65.00%
+  7493 requests in 20.05s, 33.95MB read
+Requests/sec:    373.73
+Transfer/sec:      1.69MB
+```
+
 ## FAQ
 
 ### Unable to login/ start fails with 
@@ -53,6 +69,7 @@ If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you 
 - this is due to incorrect 
 
 **TODO:**
+- Update home page with details
 - add tests and CI
 - add setup.sh to install replace imports with your directory names
 - Update Readme for better instructions to setup integrations for login and api-examples
