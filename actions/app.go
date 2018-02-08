@@ -6,13 +6,16 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/ssl"
 	"github.com/gobuffalo/envy"
 	"github.com/unrolled/secure"
-
 	"github.com/gobuffalo/buffalo/middleware/csrf"
+
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 	"github.com/niranjan92/go_hackathon_starter/models"
-
 	"github.com/markbates/goth/gothic"
+
+	_ "net/http/pprof"
+	"net/http"
+	"log"
 )
 
 // ENV is used to help switch settings based on where the
@@ -38,6 +41,9 @@ func App() *buffalo.App {
 
 		if ENV == "development" {
 			app.Use(middleware.ParameterLogger)
+			go func() {
+				log.Println(http.ListenAndServe(":8080", nil))
+			}()
 		}
 
 		// Protect against CSRF attacks. https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
