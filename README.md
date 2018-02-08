@@ -69,7 +69,6 @@ Transfer/sec:      1.69MB
 - this is due to incorrect 
 
 **TODO:**
-- Update home page with details
 - add tests and CI
 - add setup.sh to install replace imports with your directory names
 - Update Readme for better instructions to setup integrations for login and api-examples
