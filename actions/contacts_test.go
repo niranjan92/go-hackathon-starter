@@ -1,6 +1,6 @@
 package actions
 
-//TODO: fix actionSuite test 
+//TODO: fix actionSuite test
 //import (
 //	"github.com/niranjan92/go_hackathon_starter/models"
 //)

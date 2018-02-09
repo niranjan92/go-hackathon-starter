@@ -15,7 +15,6 @@ Working in Progress
 - Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
 - add tests and CI
 - deploy working example to heroku with all auths working
-
 - add account linking (needs more design)
 - FACEBOOK - show list of friends
 - add profile pic / gravatar to profile age

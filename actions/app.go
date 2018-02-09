@@ -3,19 +3,19 @@ package actions
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo/middleware"
+	"github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/ssl"
 	"github.com/gobuffalo/envy"
 	"github.com/unrolled/secure"
-	"github.com/gobuffalo/buffalo/middleware/csrf"
 
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
-	"github.com/niranjan92/go_hackathon_starter/models"
 	"github.com/markbates/goth/gothic"
+	"github.com/niranjan92/go_hackathon_starter/models"
 
-	_ "net/http/pprof"
-	"net/http"
 	"log"
+	"net/http"
+	_ "net/http/pprof"
 )
 
 // ENV is used to help switch settings based on where the
@@ -63,6 +63,8 @@ func App() *buffalo.App {
 		app.Use(T.Middleware())
 
 		app.GET("/logout", AuthDestroy)
+		app.GET("/login", LoginHandler)
+		app.DELETE("/users/", UserDestroy)
 		app.GET("/", HomeHandler)
 		app.GET("/react", ReactHandler)
 		app.GET("/api-examples", ApiExampleHandler)
@@ -75,7 +77,7 @@ func App() *buffalo.App {
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
 		app.Middleware.Skip(Authorize, HomeHandler)
-		//app.Middleware.Skip(Authorize, LoginPageHandler) TODO: add separate login page
+		app.Middleware.Skip(Authorize, LoginHandler)
 		app.Middleware.Skip(Authorize, ApiExampleHandler)
 
 		auth := app.Group("/auth")
