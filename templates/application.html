@@ -13,12 +13,10 @@
   </head>
   <body>
 
-  <div class="container">
-	  <%= partial("partials/header.html") %>
-	  <%= partial("partials/flash.html") %>
-	  <%= yield %>
-	  <%= partial("partials/footer.html") %>
-  </div>
+	<%= partial("partials/header.html") %>
+	<%= partial("partials/flash.html") %>
+	<%= yield %>
+	<%= partial("partials/footer.html") %>
 
     <%= javascriptTag("application.js") %>
   </body>

@@ -1,6 +1,17 @@
-<div class="page-header"><h3>Profile Information</h3></div>
-<div>
-  <%= form_for(current_user, {action: "/account/profile", method: "POST", class:"form-horizontal"}) { %>
+<div class="container">
+  <div class="page-header">
+    <h3>Profile Information</h3>
+  </div>
+  <%= form_for(current_user, {action: "/account/profile", method: "POST"}) { %>
     <%= partial("profile/profile_form.html") %>
   <% } %>
+ 
+  <div class="page-header">
+    <h3>Delete Account</h3>
+  </div>
+  <!-- WARNING ! - This will permanently delete your account. You will not get any of your data back -->
+  <!-- <div class="row">
+    <a href="/users/delete?user_id=<%=current_user.ID%>" 
+      data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Delete Account</a>
+  </div> -->
 </div>
