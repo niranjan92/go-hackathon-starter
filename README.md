@@ -11,9 +11,8 @@ This project is heavily inspired by [hackathon starter](https://github.com/sahat
 Working in Progress
 -------------------
 **TODO:**
-- fix UI on login page
 - add setup.sh to install replace imports with your directory names
-- Update Readme for better instructions to setup integrations for login and api-examples
+- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
 - add tests and CI
 - deploy working example to heroku with all auths working
 
@@ -22,7 +21,6 @@ Working in Progress
 - add profile pic / gravatar to profile age
 
 **Good to do:**
-- delete account feature
 - add paypal test example
 - fix highlighted part for selected tab in nav
 - admin management console for users
@@ -30,8 +28,6 @@ Working in Progress
 
 **Maybe:**
 - add examples for angular and react
-
-
 
 Table of Contents
 -----------------
