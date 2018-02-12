@@ -21,7 +21,7 @@ const twitterTimeout = 5 * time.Second
 
 // GithubHandler is a default handler to serve up samples for Github api
 func TwitterHandler(c buffalo.Context) error {
-	query := "#golang"
+	query := "#tesla"
 	searchResult, err := twitter_api.GetSearch(query, nil)
 	if err != nil {
 		c.Set("errors", err)
@@ -29,7 +29,9 @@ func TwitterHandler(c buffalo.Context) error {
 	}
 	tweets := []string{}
 	for _, tweet := range searchResult.Statuses {
-		tweets = append(tweets, tweet.Text)
+		if tweet.RetweetedStatus == nil {
+			tweets = append(tweets, tweet.Text)
+		}
 	}
 	c.Set("query", query)
 	c.Set("tweets", tweets)
