@@ -10,8 +10,5 @@
     <h3>Delete Account</h3>
   </div>
   <p> WARNING ! - This will permanently delete your account. You will not get any of your data back </p>
-  <div class="row">
-    <a href="/users?user_id=<%=current_user.ID%>" 
-      data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Delete Account</a>
-  </div>
+  <a href="/users?user_id=<%=current_user.ID%>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Delete Account</a>
 </div>
