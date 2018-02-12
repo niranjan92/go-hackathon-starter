@@ -13,8 +13,6 @@ import (
 	"github.com/markbates/goth/gothic"
 	"github.com/niranjan92/go_hackathon_starter/models"
 
-	"log"
-	"net/http"
 	_ "net/http/pprof"
 )
 
@@ -41,9 +39,11 @@ func App() *buffalo.App {
 
 		if ENV == "development" {
 			app.Use(middleware.ParameterLogger)
-			go func() {
-				log.Println(http.ListenAndServe(":8080", nil))
-			}()
+
+			// Uncomment lines below to enable pprof debugging
+			// go func() {
+			// 	log.Println(http.ListenAndServe(":8080", nil))
+			// }()
 		}
 
 		// Protect against CSRF attacks. https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
@@ -61,43 +61,46 @@ func App() *buffalo.App {
 			app.Stop(err)
 		}
 		app.Use(T.Middleware())
-
-		app.GET("/logout", AuthDestroy)
-		app.GET("/login", LoginHandler)
-		app.DELETE("/users/", UserDestroy)
-		app.GET("/", HomeHandler)
-		app.GET("/react", ReactHandler)
-		app.GET("/api-examples", ApiExampleHandler)
-		app.GET("/dashboard", DashboardHandler)
-		app.GET("/account/profile", ProfileHandler)
-		app.POST("/account/profile", UpdateProfileHandler)
-
 		app.ServeFiles("/assets", assetsBox)
 
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
-		app.Middleware.Skip(Authorize, HomeHandler)
-		app.Middleware.Skip(Authorize, LoginHandler)
-		app.Middleware.Skip(Authorize, ApiExampleHandler)
 
+		app.GET("/", HomeHandler)
+		app.GET("/login", LoginHandler)
+		app.GET("/api-examples", ApiExampleHandler)
+		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, ApiExampleHandler)
+
+		cr := &ContactsResource{&buffalo.BaseResource{}}
+		app.Middleware.Skip(Authorize, cr.New)
+		app.Middleware.Skip(Authorize, cr.Create)
+		app.Resource("/contacts", cr)
+		app.Resource("/widgets", WidgetsResource{}) //TODO: remove widget and only use contact
+
+		// configure login routes
 		auth := app.Group("/auth")
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth.GET("/{provider}", bah)
 		auth.GET("/{provider}/callback", AuthCallback)
 		auth.Middleware.Skip(Authorize, bah, AuthCallback)
 
+		// account management routes
+		app.DELETE("/users/", UserDestroy)
+		app.GET("/logout", AuthDestroy)
+		app.GET("/account/profile", ProfileHandler)
+		app.POST("/account/profile", UpdateProfileHandler)
+
+		// routes for api examples
 		api := app.Group("/api")
 		api.GET("/upload", GetUploadHandler)
 		api.POST("/upload", PostUploadHandler)
 		api.GET("/github", GithubHandler)
 		api.GET("/twitter", TwitterHandler)
 		api.GET("/scraping", ScrapingHandler)
+		api.Middleware.Skip(Authorize, GetUploadHandler, PostUploadHandler, GithubHandler,
+			TwitterHandler, ScrapingHandler)
 
-		cr := &ContactsResource{&buffalo.BaseResource{}}
-		app.Middleware.Skip(Authorize, cr.New)
-		app.Middleware.Skip(Authorize, cr.Create)
-		app.Resource("/contacts", cr)
-		app.Resource("/widgets", WidgetsResource{})
+		app.GET("/react", ReactHandler) //TODO:
 	}
 
 	return app
