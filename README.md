@@ -1,5 +1,7 @@
 # Welcome to Go Hackathon Starter!
 
+The project is a boilerplate application in Golang and has commonly used  API examples built into it. Out of the box support for authentication, account management and a host of other features for your next hackathon or side project.
+
 ## Why did I create this? 
 When I first started out with Go, I found tons of comments online saying - just use the standard library! Now Go's standard library is one of the best one's I've seen, but it doesn't give all you need to build a full fledged web application. I tried to use go for many of side projects and found myself repeating some of the most common things like authentication, user management, lack of generators for CRUD applications etc.
 This project is heavily inspired by [hackathon starter](https://github.com/sahat/hackathon-starter) which is based on nodejs and express. Being a developer with both nodejs and Go experience, I found this missing in the Go ecosystem. This project is a step towards that direction. The focus of the project is to optimize developer speed and keep everything clean and reusable as much as possible.
@@ -18,6 +20,8 @@ Working in Progress
 - add account linking (needs more design)
 - FACEBOOK - show list of friends
 - add profile pic / gravatar to profile age
+- angular example with separate home page
+- react example with separate home page
 
 **Good to do:**
 - add paypal test example
@@ -43,8 +47,8 @@ Table of Contents
 - [Cheatsheets](#cheatsheets)
     <!-- - [Adding new authentication](#) -->
 - [Benchmarks](#benchmarks)
-- [Deployment](#deployment) TODO
-- [Docker](#docker) TODO
+- [Deployment](#deployment) 
+- [Docker](#docker) 
 <!-- - [Changelog](#changelog) -->
 <!-- - [Contributing](#contributing) -->
 <!-- - [License](#license) -->
@@ -143,10 +147,10 @@ Transfer/sec:      1.69MB
 
 Docker
 ---------
+TODO
 
 Deploy
 ----------
-
-[Powered by Buffalo](http://gobuffalo.io)
+TODO
 
 
