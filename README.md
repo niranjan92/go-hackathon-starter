@@ -13,8 +13,6 @@ This project is heavily inspired by [hackathon starter](https://github.com/sahat
 Working in Progress
 -------------------
 **TODO:**
-- add setup.sh to install replace imports with your directory names
-- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
 - add tests and CI
 - deploy working example to heroku with all auths working
 - add account linking (needs more design)
@@ -22,6 +20,7 @@ Working in Progress
 - add profile pic / gravatar to profile age
 - angular example with separate home page
 - react example with separate home page
+- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
 
 **Good to do:**
 - add paypal test example
@@ -66,13 +65,21 @@ cd ~/go/src/github.com/<username>/
 # clone the code
 git clone git@github.com:niranjan92/go-hackathon-starter
 
+cd go-hackathon-starter
+
+## run the setup script
+## currently supports macOS
+./setup.sh
+```
+
+if script doesn't run or is unsupported, you need to do steps given below manually in the project directory
+```
 # install dependencies
 npm install
 
-## find and replace imports with your directory
+## MANUAL - find and replace imports with your directory
 ## eg. import "github.com/niranjan92/go-hackathon-starter" needs to be replaced with
 ## 	   import "github.com/<your_username>/go-hackathon-starter"
-## this will soon be fixed with new utility script `setup.sh` - coming soon
 
 # init go dependencies
 dep ensure
@@ -85,11 +92,9 @@ buffalo db create -a
 # run migrations
 buffalo db migrate
 
-# start server in dev mode
-buffalo dev
-
 ```
 
+once script has completed start the server using - `buffalo dev`
 If you point your browser to [http://127.0.0.1:3000](http://127.0.0.1:3000) you should see a "Welcome to Go Hackathon Starter!" page.
 
 Obtaining API Keys
