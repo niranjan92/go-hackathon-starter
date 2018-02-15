@@ -16,7 +16,7 @@ import (
 	"github.com/markbates/goth/providers/twitter"
 	"github.com/markbates/pop"
 	"github.com/markbates/pop/nulls"
-	"github.com/niranjan92/go_hackathon_starter/models"
+	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
 )
 

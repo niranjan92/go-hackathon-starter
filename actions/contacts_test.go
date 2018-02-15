@@ -2,7 +2,7 @@ package actions
 
 //TODO: fix actionSuite test
 //import (
-//	"github.com/niranjan92/go_hackathon_starter/models"
+//	"github.com/niranjan92/go-hackathon-starter/models"
 //)
 
 //func (as *ActionSuite) Test_ContactsResource_New() {

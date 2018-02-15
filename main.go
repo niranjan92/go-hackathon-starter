@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/niranjan92/go_hackathon_starter/actions"
+	"github.com/niranjan92/go-hackathon-starter/actions"
 )
 
 func main() {

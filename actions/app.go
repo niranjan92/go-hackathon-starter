@@ -11,7 +11,7 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 	"github.com/markbates/goth/gothic"
-	"github.com/niranjan92/go_hackathon_starter/models"
+	"github.com/niranjan92/go-hackathon-starter/models"
 
 	_ "net/http/pprof"
 )
