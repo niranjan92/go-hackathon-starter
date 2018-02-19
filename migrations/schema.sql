@@ -35,7 +35,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: contacts; Type: TABLE; Schema: public; Owner: postgres
+-- Name: contacts; Type: TABLE; Schema: public; Owner: niranjan
 --
 
 CREATE TABLE contacts (
@@ -48,10 +48,10 @@ CREATE TABLE contacts (
 );
 
 
-ALTER TABLE contacts OWNER TO postgres;
+ALTER TABLE contacts OWNER TO niranjan;
 
 --
--- Name: schema_migration; Type: TABLE; Schema: public; Owner: postgres
+-- Name: schema_migration; Type: TABLE; Schema: public; Owner: niranjan
 --
 
 CREATE TABLE schema_migration (
@@ -59,10 +59,10 @@ CREATE TABLE schema_migration (
 );
 
 
-ALTER TABLE schema_migration OWNER TO postgres;
+ALTER TABLE schema_migration OWNER TO niranjan;
 
 --
--- Name: user_profiles; Type: TABLE; Schema: public; Owner: postgres
+-- Name: user_profiles; Type: TABLE; Schema: public; Owner: niranjan
 --
 
 CREATE TABLE user_profiles (
@@ -78,10 +78,10 @@ CREATE TABLE user_profiles (
 );
 
 
-ALTER TABLE user_profiles OWNER TO postgres;
+ALTER TABLE user_profiles OWNER TO niranjan;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
+-- Name: users; Type: TABLE; Schema: public; Owner: niranjan
 --
 
 CREATE TABLE users (
@@ -99,10 +99,10 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO postgres;
+ALTER TABLE users OWNER TO niranjan;
 
 --
--- Name: widgets; Type: TABLE; Schema: public; Owner: postgres
+-- Name: widgets; Type: TABLE; Schema: public; Owner: niranjan
 --
 
 CREATE TABLE widgets (
@@ -113,10 +113,10 @@ CREATE TABLE widgets (
 );
 
 
-ALTER TABLE widgets OWNER TO postgres;
+ALTER TABLE widgets OWNER TO niranjan;
 
 --
--- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: niranjan
 --
 
 ALTER TABLE ONLY contacts
@@ -124,7 +124,7 @@ ALTER TABLE ONLY contacts
 
 
 --
--- Name: user_profiles user_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: user_profiles user_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: niranjan
 --
 
 ALTER TABLE ONLY user_profiles
@@ -132,7 +132,7 @@ ALTER TABLE ONLY user_profiles
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: niranjan
 --
 
 ALTER TABLE ONLY users
@@ -140,7 +140,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: widgets widgets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: widgets widgets_pkey; Type: CONSTRAINT; Schema: public; Owner: niranjan
 --
 
 ALTER TABLE ONLY widgets
@@ -148,21 +148,21 @@ ALTER TABLE ONLY widgets
 
 
 --
--- Name: user_profiles_provider_provider_id_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: user_profiles_provider_provider_id_idx; Type: INDEX; Schema: public; Owner: niranjan
 --
 
 CREATE UNIQUE INDEX user_profiles_provider_provider_id_idx ON user_profiles USING btree (provider, provider_id);
 
 
 --
--- Name: users_provider_provider_id_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: users_provider_provider_id_idx; Type: INDEX; Schema: public; Owner: niranjan
 --
 
 CREATE UNIQUE INDEX users_provider_provider_id_idx ON users USING btree (provider, provider_id);
 
 
 --
--- Name: version_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: version_idx; Type: INDEX; Schema: public; Owner: niranjan
 --
 
 CREATE UNIQUE INDEX version_idx ON schema_migration USING btree (version);

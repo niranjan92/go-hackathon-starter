@@ -56,6 +56,8 @@ func init() {
 
 }
 
+// SetCurrentUser is a middleware which adds current_user info to
+// the incoming request
 func SetCurrentUser(next buffalo.Handler) buffalo.Handler {
 	return func(c buffalo.Context) error {
 		if uid := c.Session().Get("current_user_id"); uid != nil {
@@ -70,6 +72,7 @@ func SetCurrentUser(next buffalo.Handler) buffalo.Handler {
 	}
 }
 
+// Authorize is a middleware which adds validation for authorized routes
 func Authorize(next buffalo.Handler) buffalo.Handler {
 	return func(c buffalo.Context) error {
 		if uid := c.Session().Get("current_user_id"); uid == nil {
@@ -80,6 +83,8 @@ func Authorize(next buffalo.Handler) buffalo.Handler {
 	}
 }
 
+// AuthCallback returned after goth finishes user authentication
+// saves new user and profile to database
 func AuthCallback(c buffalo.Context) error {
 	gu, err := gothic.CompleteUserAuth(c.Response(), c.Request())
 	if err != nil {
@@ -121,6 +126,7 @@ func AuthCallback(c buffalo.Context) error {
 
 }
 
+// AuthDestroy implements logout functionality
 func AuthDestroy(c buffalo.Context) error {
 	c.Session().Clear()
 	c.Flash().Add("success", "You have been logged out")

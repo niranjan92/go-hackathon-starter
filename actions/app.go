@@ -12,14 +12,16 @@ import (
 	"github.com/gobuffalo/packr"
 	"github.com/markbates/goth/gothic"
 	"github.com/niranjan92/go-hackathon-starter/models"
-
-	_ "net/http/pprof"
+	// used for performance profiling
+	// _ "net/http/pprof"
 )
 
 // ENV is used to help switch settings based on where the
 // application is being run. Default is "development".
 var ENV = envy.Get("GO_ENV", "development")
 var app *buffalo.App
+
+// T is a translator used for internationalization
 var T *i18n.Translator
 
 // App is where all routes and middleware for buffalo
@@ -68,8 +70,8 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 		app.GET("/login", LoginHandler)
-		app.GET("/api-examples", ApiExampleHandler)
-		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, ApiExampleHandler)
+		app.GET("/api-examples", APIExampleHandler)
+		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, APIExampleHandler)
 
 		cr := &ContactsResource{&buffalo.BaseResource{}}
 		app.Middleware.Skip(Authorize, cr.New)

@@ -15,7 +15,9 @@ const githubTimeout = 5 * time.Second
 func GithubHandler(c buffalo.Context) error {
 	owner, repoName := "sahat", "hackathon-starter" //TODO: replace this with mine
 	client := github.NewClient(nil)
-	ctx, _ := context.WithTimeout(context.Background(), githubTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), githubTimeout)
+	defer cancel()
+
 	repo, _, err := client.Repositories.Get(ctx, owner, repoName)
 	if err != nil {
 		return errors.WithStack(err)

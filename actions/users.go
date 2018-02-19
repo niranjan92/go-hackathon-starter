@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Destroy deletes a User from the DB. This function is mapped
+// UserDestroy deletes a User from the DB. This function is mapped
 // to the path DELETE /users/{user_id}
 func UserDestroy(c buffalo.Context) error {
 	// clear user session first

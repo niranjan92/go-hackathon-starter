@@ -20,7 +20,7 @@ type article struct {
 	Href string `json:"href"`
 }
 
-const NumArticles = 25
+const numArticles = 25
 
 // ScrapingHandler is a default handler to serve up samples for scraping
 // hackernews topics
@@ -60,5 +60,5 @@ func getArticles(url string) ([]article, error) {
 		fmt.Printf("%2d %s (%s)\n", i, scrape.Text(art), scrape.Attr(art, "href"))
 		res = append(res, article{Text: scrape.Text(art), Href: scrape.Attr(art, "href")})
 	}
-	return res[:NumArticles], nil
+	return res[:numArticles], nil
 }
