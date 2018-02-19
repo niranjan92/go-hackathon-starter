@@ -4,17 +4,19 @@ import (
 	"encoding/json"
 	"time"
 
+	"io"
+	"os"
+	"path/filepath"
+
 	"github.com/gobuffalo/buffalo/binding"
 	"github.com/markbates/pop"
 	"github.com/markbates/validate"
 	"github.com/markbates/validate/validators"
-	"github.com/satori/go.uuid"
-	"path/filepath"
-	"os"
 	"github.com/pkg/errors"
-	"io"
+	"github.com/satori/go.uuid"
 )
 
+// Widget is orm for widgets
 type Widget struct {
 	ID         uuid.UUID    `json:"id" db:"id"`
 	CreatedAt  time.Time    `json:"created_at" db:"created_at"`
@@ -58,6 +60,7 @@ func (w *Widget) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
 
+// AfterCreate gets run every time after you save widget to database
 func (w *Widget) AfterCreate(tx *pop.Connection) error {
 	if !w.Uploadfile.Valid() {
 		return nil

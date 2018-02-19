@@ -11,6 +11,7 @@ import (
 	"github.com/satori/go.uuid"
 )
 
+// User is orm model for databse user
 type User struct {
 	ID         uuid.UUID    `json:"id" db:"id"`
 	CreatedAt  time.Time    `json:"created_at" db:"created_at"`
@@ -20,7 +21,7 @@ type User struct {
 	Gender     nulls.String `json:"gender" db:"gender"` //TODO: string vs nulls.String
 	Location   nulls.String `json:"location" db:"location"`
 	Website    nulls.String `json:"website" db:"website"`
-	Gravatar 	 nulls.String `json:"gravatar" db:"gravatar"`
+	Gravatar   nulls.String `json:"gravatar" db:"gravatar"`
 	Provider   string       `json:"provider" db:"provider"`
 	ProviderID string       `json:"provider_id" db:"provider_id"`
 }

@@ -11,6 +11,8 @@ import (
 	"github.com/satori/go.uuid"
 )
 
+// UserProfile is orm for database user profile
+// saves profile per login provider like facebook, github etc
 type UserProfile struct {
 	ID         uuid.UUID    `json:"id" db:"id"`
 	Name       string       `json:"name" db:"name"`
