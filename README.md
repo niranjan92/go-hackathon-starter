@@ -1,5 +1,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/67f661931931d22417d3/maintainability)](https://codeclimate.com/github/niranjan92/go-hackathon-starter/maintainability)
-
+ [![Test Coverage](https://api.codeclimate.com/v1/badges/67f661931931d22417d3/test_coverage)](https://codeclimate.com/github/niranjan92/go-hackathon-starter/test_coverage)
 
 # Welcome to Go Hackathon Starter!
 
