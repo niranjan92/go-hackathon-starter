@@ -2,6 +2,7 @@ package packr
 
 import (
 	"bytes"
+	"compress/gzip"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -10,9 +11,6 @@ import (
 	"runtime"
 	"strings"
 
-	"compress/gzip"
-
-	"github.com/gobuffalo/envy"
 	"github.com/pkg/errors"
 )
 
@@ -34,7 +32,7 @@ func NewBox(path string) Box {
 	cov := filepath.Join("_test", "_obj_test")
 	cd = strings.Replace(cd, string(filepath.Separator)+cov, "", 1)
 	if !filepath.IsAbs(cd) && cd != "" {
-		cd = filepath.Join(envy.GoPath(), "src", cd)
+		cd = filepath.Join(GoPath(), "src", cd)
 	}
 
 	return Box{
@@ -204,7 +202,7 @@ func (b Box) List() []string {
 func (b *Box) indexDirectories() {
 	b.directories = map[string]bool{}
 	if _, ok := data[b.Path]; ok {
-		for name, _ := range data[b.Path] {
+		for name := range data[b.Path] {
 			prefix, _ := path.Split(name)
 			// Even on Windows the suffix appears to be a /
 			prefix = strings.TrimSuffix(prefix, "/")
