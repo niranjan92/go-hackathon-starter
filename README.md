@@ -18,9 +18,8 @@ This project is heavily inspired by [hackathon starter](https://github.com/sahat
 Working in Progress
 -------------------
 **TODO:**
-- add tests and CI
 - deploy working example to heroku with all auths working
-- add account linking (needs more design)
+- add account linking
 - FACEBOOK - show list of friends
 - add profile pic / gravatar to profile age
 - angular example with separate home page
@@ -32,6 +31,7 @@ Working in Progress
 - fix highlighted part for selected tab in nav
 - admin management console for users
 - add a simpler way to configure db. maybe using docker compose
+- increase coverage
 
 **Maybe:**
 - add examples for angular and react
