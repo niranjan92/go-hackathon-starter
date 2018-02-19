@@ -19,6 +19,9 @@ install:
   - dep ensure
 
 script:
+  - go get -u -v github.com/gobuffalo/buffalo/buffalo
+  - ls -al $GOPATH/bin
+  - buffalo db create -a
   - go test ./...
 
 notifications:
