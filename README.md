@@ -1,9 +1,9 @@
+# Welcome to Go Hackathon Starter!
+
 [![Build Status](https://travis-ci.org/niranjan92/go-hackathon-starter.svg?branch=master)](https://travis-ci.org/niranjan92/go-hackathon-starter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/niranjan92/go-hackathon-starter)](https://goreportcard.com/report/github.com/niranjan92/go-hackathon-starter)
 [![Maintainability](https://api.codeclimate.com/v1/badges/67f661931931d22417d3/maintainability)](https://codeclimate.com/github/niranjan92/go-hackathon-starter/maintainability)
  [![Test Coverage](https://api.codeclimate.com/v1/badges/67f661931931d22417d3/test_coverage)](https://codeclimate.com/github/niranjan92/go-hackathon-starter/test_coverage)
-
-# Welcome to Go Hackathon Starter!
 
 The project is a boilerplate application in Golang and has commonly used  API examples built into it. Out of the box support for authentication, account management and a host of other features for your next hackathon or side project.
 
