@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/67f661931931d22417d3/maintainability)](https://codeclimate.com/github/niranjan92/go-hackathon-starter/maintainability)
+
+
 # Welcome to Go Hackathon Starter!
 
 The project is a boilerplate application in Golang and has commonly used  API examples built into it. Out of the box support for authentication, account management and a host of other features for your next hackathon or side project.
