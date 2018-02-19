@@ -14,6 +14,7 @@ exclude_paths:
   - "**_test.go"
   - logs/*
   - public/*
+  - vendor/*
   - templates/*
 ratings:
   paths:
