@@ -104,10 +104,10 @@
   version = "v0.10.3"
 
 [[projects]]
+  branch = "master"
   name = "github.com/gobuffalo/envy"
   packages = ["."]
-  revision = "e613c80275b86293880eddeb27417c9a7c670ff3"
-  version = "v1.3.0"
+  revision = "98ac831eace185ee97a16c4e5c506d3eb8403121"
 
 [[projects]]
   name = "github.com/gobuffalo/packr"
@@ -344,6 +344,7 @@
   revision = "55d61fa8aa702f59229e6cff85793c22e580eaf5"
 
 [[projects]]
+  branch = "master"
   name = "github.com/satori/go.uuid"
   packages = ["."]
   revision = "36e9d2ebbde5e3f13ab2e25625fd453271d6522e"
@@ -489,6 +490,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "52fbde58cbafcca761b57d8dd11c77aa719c17c5f521a3c7b10c2236559c0f3d"
+  inputs-digest = "d73ed4a564a7d76cec2e261da880a0a5ebda86b808e07b969dcbb19519f11f8f"
   solver-name = "gps-cdcl"
   solver-version = 1
