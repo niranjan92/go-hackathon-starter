@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - 1.8.x
+  - 1.9.x
+  
+before_install:
+  - go get -u github.com/golang/dep
+  - dep ensure
+
+script:
+  - go test ./...
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
