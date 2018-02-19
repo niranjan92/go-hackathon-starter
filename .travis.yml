@@ -6,6 +6,8 @@ go:
   
 before_install:
   - go get -u github.com/golang/dep
+  - export PATH=$PATH:$GOPATH/bin
+  - ls $GOPATH/bin
   - dep ensure
 
 script:
