@@ -1,8 +1,9 @@
-package actions
+package app
 
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
 )
@@ -47,7 +48,7 @@ func (v ContactsResource) List(c buffalo.Context) error {
 	// Add the paginator to the context so it can be used in the template.
 	c.Set("pagination", q.Paginator)
 
-	return c.Render(200, r.HTML("contacts/index.html"))
+	return c.Render(200, render.R.HTML("contacts/index.html"))
 }
 
 // Show gets the data for one Contact. This function is mapped to
@@ -67,7 +68,7 @@ func (v ContactsResource) Show(c buffalo.Context) error {
 	// Make contact available inside the html template
 	c.Set("contact", contact)
 
-	return c.Render(200, r.HTML("contacts/show.html"))
+	return c.Render(200, render.R.HTML("contacts/show.html"))
 }
 
 // New renders the form for creating a new Contact.
@@ -76,7 +77,7 @@ func (v ContactsResource) New(c buffalo.Context) error {
 	// Make contact available inside the html template
 	c.Set("contact", &models.Contact{})
 
-	return c.Render(200, r.HTML("contacts/new.html"))
+	return c.Render(200, render.R.HTML("contacts/new.html"))
 }
 
 // Create adds a Contact to the DB. This function is mapped to the
@@ -108,7 +109,7 @@ func (v ContactsResource) Create(c buffalo.Context) error {
 
 		// Render again the new.html template that the user can
 		// correct the input.
-		return c.Render(422, r.HTML("contacts/new.html"))
+		return c.Render(422, render.R.HTML("contacts/new.html"))
 	}
 
 	// If there are no errors set a success message
@@ -133,7 +134,7 @@ func (v ContactsResource) Edit(c buffalo.Context) error {
 
 	// Make contact available inside the html template
 	c.Set("contact", contact)
-	return c.Render(200, r.HTML("contacts/edit.html"))
+	return c.Render(200, render.R.HTML("contacts/edit.html"))
 }
 
 // Update changes a Contact in the DB. This function is mapped to
@@ -168,7 +169,7 @@ func (v ContactsResource) Update(c buffalo.Context) error {
 
 		// Render again the edit.html template that the user can
 		// correct the input.
-		return c.Render(422, r.HTML("contacts/edit.html"))
+		return c.Render(422, render.R.HTML("contacts/edit.html"))
 	}
 
 	// If there are no errors set a success message

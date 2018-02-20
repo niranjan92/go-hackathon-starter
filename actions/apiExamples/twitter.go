@@ -1,4 +1,4 @@
-package actions
+package apiExamples
 
 import (
 	"os"
@@ -6,6 +6,7 @@ import (
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/gobuffalo/buffalo"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/pkg/errors"
 )
 
@@ -35,5 +36,5 @@ func TwitterHandler(c buffalo.Context) error {
 	}
 	c.Set("query", query)
 	c.Set("tweets", tweets)
-	return c.Render(200, r.HTML("api-examples/twitter.html"))
+	return c.Render(200, render.R.HTML("api-examples/twitter.html"))
 }

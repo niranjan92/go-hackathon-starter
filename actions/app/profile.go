@@ -1,10 +1,11 @@
-package actions
+package app
 
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
 
 	"github.com/markbates/pop/nulls"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
 )
@@ -13,7 +14,7 @@ import (
 // a profile page.
 func ProfileHandler(c buffalo.Context) error {
 	// get current user details to show
-	return c.Render(200, r.HTML("profile/profile.html"))
+	return c.Render(200, render.R.HTML("profile/profile.html"))
 }
 
 // UpdateProfileHandler is a default handler to serve up
@@ -36,5 +37,5 @@ func UpdateProfileHandler(c buffalo.Context) error {
 	c.Set("current_user", u)
 
 	c.Flash().Add("success", "profile updated!")
-	return c.Render(200, r.HTML("profile/profile.html"))
+	return c.Render(200, render.R.HTML("profile/profile.html"))
 }

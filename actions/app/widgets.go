@@ -1,8 +1,9 @@
-package actions
+package app
 
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
 )
@@ -50,7 +51,7 @@ func (v WidgetsResource) List(c buffalo.Context) error {
 	// Add the paginator to the context so it can be used in the template.
 	c.Set("pagination", q.Paginator)
 
-	return c.Render(200, r.HTML("widgets/index.html"))
+	return c.Render(200, render.R.HTML("widgets/index.html"))
 }
 
 // Show gets the data for one Widget. This function is mapped to
@@ -73,7 +74,7 @@ func (v WidgetsResource) Show(c buffalo.Context) error {
 	// Make widget available inside the html template
 	c.Set("widget", widget)
 
-	return c.Render(200, r.HTML("widgets/show.html"))
+	return c.Render(200, render.R.HTML("widgets/show.html"))
 }
 
 // New renders the form for creating a new Widget.
@@ -82,7 +83,7 @@ func (v WidgetsResource) New(c buffalo.Context) error {
 	// Make widget available inside the html template
 	c.Set("widget", &models.Widget{})
 
-	return c.Render(200, r.HTML("widgets/new.html"))
+	return c.Render(200, render.R.HTML("widgets/new.html"))
 }
 
 // Create adds a Widget to the DB. This function is mapped to the
@@ -117,7 +118,7 @@ func (v WidgetsResource) Create(c buffalo.Context) error {
 
 		// Render again the new.html template that the user can
 		// correct the input.
-		return c.Render(422, r.HTML("widgets/new.html"))
+		return c.Render(422, render.R.HTML("widgets/new.html"))
 	}
 
 	// If there are no errors set a success message
@@ -145,7 +146,7 @@ func (v WidgetsResource) Edit(c buffalo.Context) error {
 
 	// Make widget available inside the html template
 	c.Set("widget", widget)
-	return c.Render(200, r.HTML("widgets/edit.html"))
+	return c.Render(200, render.R.HTML("widgets/edit.html"))
 }
 
 // Update changes a Widget in the DB. This function is mapped to
@@ -183,7 +184,7 @@ func (v WidgetsResource) Update(c buffalo.Context) error {
 
 		// Render again the edit.html template that the user can
 		// correct the input.
-		return c.Render(422, r.HTML("widgets/edit.html"))
+		return c.Render(422, render.R.HTML("widgets/edit.html"))
 	}
 
 	// If there are no errors set a success message

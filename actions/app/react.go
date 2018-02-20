@@ -1,0 +1,13 @@
+package app
+
+import (
+	"github.com/gobuffalo/buffalo"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
+)
+
+// ReactHandler is a default handler to serve up
+// a home page.
+// TODO: fix jsx part of this
+func ReactHandler(c buffalo.Context) error {
+	return c.Render(200, render.ReactR.HTML("index.html"))
+}
