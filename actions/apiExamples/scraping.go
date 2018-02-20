@@ -1,4 +1,4 @@
-package actions
+package apiExamples
 
 import (
 	"github.com/gobuffalo/buffalo"
@@ -10,6 +10,8 @@ import (
 	"github.com/yhat/scrape"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
+
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 )
 
 // add a better crawling example
@@ -32,7 +34,7 @@ func ScrapingHandler(c buffalo.Context) error {
 		return errors.WithStack(err)
 	}
 	c.Set("articles", articles)
-	return c.Render(200, r.HTML("api-examples/scraping.html"))
+	return c.Render(200, render.R.HTML("api-examples/scraping.html"))
 }
 
 func getArticles(url string) ([]article, error) {

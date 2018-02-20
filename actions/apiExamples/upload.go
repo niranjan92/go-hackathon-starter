@@ -1,10 +1,12 @@
-package actions
+package apiExamples
 
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
-	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
+
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/models"
 )
 
 // GetUploadHandler is a default handler to serve up
@@ -12,7 +14,7 @@ import (
 func GetUploadHandler(c buffalo.Context) error {
 	// get current user details to show
 	c.Set("widget", &models.Widget{})
-	return c.Render(200, r.HTML("api-examples/upload.html"))
+	return c.Render(200, render.R.HTML("api-examples/upload.html"))
 }
 
 // PostUploadHandler is used to handle a file upload
@@ -40,7 +42,7 @@ func PostUploadHandler(c buffalo.Context) error {
 
 		// Render again the new.html template that the user can
 		// correct the input.
-		return c.Render(422, r.HTML("/"))
+		return c.Render(422, render.R.HTML("/"))
 		//return c.Render(422, r.HTML("api-examples/upload.html"))
 	}
 	// If there are no errors set a success message

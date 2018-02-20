@@ -1,4 +1,4 @@
-package actions
+package app
 
 import (
 	"github.com/gobuffalo/buffalo"
@@ -11,6 +11,8 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 	"github.com/markbates/goth/gothic"
+	"github.com/niranjan92/go-hackathon-starter/actions/apiExamples"
+	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
 	// used for performance profiling
 	// _ "net/http/pprof"
@@ -59,19 +61,19 @@ func App() *buffalo.App {
 
 		// Setup and use translations:
 		var err error
-		if T, err = i18n.New(packr.NewBox("../locales"), "en-US"); err != nil {
+		if T, err = i18n.New(packr.NewBox("../../locales"), "en-US"); err != nil {
 			app.Stop(err)
 		}
 		app.Use(T.Middleware())
-		app.ServeFiles("/assets", assetsBox)
+		app.ServeFiles("/assets", render.AssetsBox)
 
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
 
 		app.GET("/", HomeHandler)
 		app.GET("/login", LoginHandler)
-		app.GET("/api-examples", APIExampleHandler)
-		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, APIExampleHandler)
+		app.GET("/api-examples", apiExamples.APIExampleHandler)
+		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, apiExamples.APIExampleHandler)
 
 		cr := &ContactsResource{&buffalo.BaseResource{}}
 		app.Middleware.Skip(Authorize, cr.New)
@@ -94,13 +96,13 @@ func App() *buffalo.App {
 
 		// routes for api examples
 		api := app.Group("/api")
-		api.GET("/upload", GetUploadHandler)
-		api.POST("/upload", PostUploadHandler)
-		api.GET("/github", GithubHandler)
-		api.GET("/twitter", TwitterHandler)
-		api.GET("/scraping", ScrapingHandler)
-		api.Middleware.Skip(Authorize, GetUploadHandler, PostUploadHandler, GithubHandler,
-			TwitterHandler, ScrapingHandler)
+		api.GET("/upload", apiExamples.GetUploadHandler)
+		api.POST("/upload", apiExamples.PostUploadHandler)
+		api.GET("/github", apiExamples.GithubHandler)
+		api.GET("/twitter", apiExamples.TwitterHandler)
+		api.GET("/scraping", apiExamples.ScrapingHandler)
+		api.Middleware.Skip(Authorize, apiExamples.GetUploadHandler, apiExamples.PostUploadHandler, apiExamples.GithubHandler,
+			apiExamples.TwitterHandler, apiExamples.ScrapingHandler)
 
 		app.GET("/react", ReactHandler) //TODO:
 	}
