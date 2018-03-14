@@ -6,8 +6,7 @@ import (
 )
 
 // ReactHandler is a default handler to serve up
-// a home page.
-// TODO: fix jsx part of this
+// a home page. TODO
 func ReactHandler(c buffalo.Context) error {
 	return c.Render(200, render.ReactR.HTML("index.html"))
 }

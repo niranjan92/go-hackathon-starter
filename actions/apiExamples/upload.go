@@ -2,7 +2,7 @@ package apiExamples
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/markbates/pop"
+	"github.com/gobuffalo/pop"
 	"github.com/pkg/errors"
 
 	"github.com/niranjan92/go-hackathon-starter/actions/render"

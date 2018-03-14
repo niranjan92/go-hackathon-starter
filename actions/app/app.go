@@ -70,42 +70,48 @@ func App() *buffalo.App {
 		app.Use(SetCurrentUser)
 		app.Use(Authorize)
 
-		app.GET("/", HomeHandler)
-		app.GET("/login", LoginHandler)
-		app.GET("/api-examples", apiExamples.APIExampleHandler)
-		app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, apiExamples.APIExampleHandler)
+		configureRoutes(app)
 
-		cr := &ContactsResource{&buffalo.BaseResource{}}
-		app.Middleware.Skip(Authorize, cr.New)
-		app.Middleware.Skip(Authorize, cr.Create)
-		app.Resource("/contacts", cr)
-		app.Resource("/widgets", WidgetsResource{}) //TODO: remove widget and only use contact
-
-		// configure login routes
-		auth := app.Group("/auth")
-		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
-		auth.GET("/{provider}", bah)
-		auth.GET("/{provider}/callback", AuthCallback)
-		auth.Middleware.Skip(Authorize, bah, AuthCallback)
-
-		// account management routes
-		app.DELETE("/users/", UserDestroy)
-		app.GET("/logout", AuthDestroy)
-		app.GET("/account/profile", ProfileHandler)
-		app.POST("/account/profile", UpdateProfileHandler)
-
-		// routes for api examples
-		api := app.Group("/api")
-		api.GET("/upload", apiExamples.GetUploadHandler)
-		api.POST("/upload", apiExamples.PostUploadHandler)
-		api.GET("/github", apiExamples.GithubHandler)
-		api.GET("/twitter", apiExamples.TwitterHandler)
-		api.GET("/scraping", apiExamples.ScrapingHandler)
-		api.Middleware.Skip(Authorize, apiExamples.GetUploadHandler, apiExamples.PostUploadHandler, apiExamples.GithubHandler,
-			apiExamples.TwitterHandler, apiExamples.ScrapingHandler)
-
-		app.GET("/react", ReactHandler) //TODO:
 	}
 
 	return app
+}
+
+func configureRoutes(app *buffalo.App) {
+	app.GET("/", HomeHandler)
+	app.GET("/login", LoginHandler)
+	app.GET("/api-examples", apiExamples.APIExampleHandler)
+	app.Middleware.Skip(Authorize, HomeHandler, LoginHandler, apiExamples.APIExampleHandler)
+
+	cr := &ContactsResource{&buffalo.BaseResource{}}
+	app.Middleware.Skip(Authorize, cr.New)
+	app.Middleware.Skip(Authorize, cr.Create)
+	app.Resource("/contacts", cr)
+	app.Resource("/widgets", WidgetsResource{}) //TODO: remove widget and only use contact
+
+	// configure login routes
+	auth := app.Group("/auth")
+	bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
+	auth.GET("/{provider}", bah)
+	auth.GET("/{provider}/callback", AuthCallback)
+	auth.Middleware.Skip(Authorize, bah, AuthCallback)
+
+	// account management routes
+	app.DELETE("/users/", UserDestroy)
+	app.GET("/logout", AuthDestroy)
+	app.GET("/account/profile", ProfileHandler)
+	app.POST("/account/profile", UpdateProfileHandler)
+
+	// routes for api examples
+	api := app.Group("/api")
+	api.GET("/upload", apiExamples.GetUploadHandler)
+	api.POST("/upload", apiExamples.PostUploadHandler)
+	api.GET("/github", apiExamples.GithubHandler)
+	api.GET("/twitter", apiExamples.TwitterHandler)
+	api.GET("/scraping", apiExamples.ScrapingHandler)
+	api.Middleware.Skip(Authorize, apiExamples.GetUploadHandler, apiExamples.PostUploadHandler, apiExamples.GithubHandler,
+		apiExamples.TwitterHandler, apiExamples.ScrapingHandler)
+
+	app.GET("/react", ReactHandler) //TODO:
+
 }
