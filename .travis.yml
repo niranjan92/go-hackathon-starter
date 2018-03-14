@@ -23,6 +23,8 @@ script:
   - ls -al $GOPATH/bin
   - buffalo db create -a
   - go test ./...
+  - echo "testing buffalo build"
+  - buffalo build
 
 notifications:
   email:
