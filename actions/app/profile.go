@@ -2,9 +2,9 @@ package app
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/markbates/pop"
+	"github.com/gobuffalo/pop"
 
-	"github.com/markbates/pop/nulls"
+	"github.com/gobuffalo/pop/nulls"
 	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
 	"github.com/pkg/errors"
