@@ -3,7 +3,6 @@ package apiExamples
 import (
 	"github.com/gobuffalo/buffalo"
 
-	"fmt"
 	"net/http"
 
 	"github.com/pkg/errors"
@@ -48,19 +47,22 @@ func getArticles(url string) ([]article, error) {
 		return nil, err
 	}
 
-	// define a matcher
-	matcher := func(n *html.Node) bool {
+	res := []article{}
+	matcher := getmatcher()
+	parsedArticles := scrape.FindAll(root, matcher)
+	for _, art := range parsedArticles {
+		res = append(res, article{Text: scrape.Text(art), Href: scrape.Attr(art, "href")})
+	}
+	return res[:numArticles], nil
+}
+
+// add your custom matcher here
+func getmatcher() scrape.Matcher {
+	return func(n *html.Node) bool {
 		// must check for nil values
 		if n.DataAtom == atom.A && n.Parent != nil && n.Parent.Parent != nil {
 			return scrape.Attr(n.Parent.Parent, "class") == "athing"
 		}
 		return false
 	}
-	res := []article{}
-	parsedArticles := scrape.FindAll(root, matcher)
-	for i, art := range parsedArticles {
-		fmt.Printf("%2d %s (%s)\n", i, scrape.Text(art), scrape.Attr(art, "href"))
-		res = append(res, article{Text: scrape.Text(art), Href: scrape.Attr(art, "href")})
-	}
-	return res[:numArticles], nil
 }
