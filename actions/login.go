@@ -1,4 +1,4 @@
-package app
+package actions
 
 import (
 	"github.com/gobuffalo/buffalo"

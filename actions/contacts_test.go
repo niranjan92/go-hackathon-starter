@@ -1,4 +1,4 @@
-package app
+package actions
 
 //TODO: fix actionSuite test
 //import (

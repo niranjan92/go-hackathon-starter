@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/niranjan92/go-hackathon-starter/actions/app"
+	"github.com/niranjan92/go-hackathon-starter/actions"
 )
 
 func main() {
-	app := app.App()
+	app := actions.App()
 	if err := app.Serve(); err != nil {
 		log.Fatal(err)
 	}

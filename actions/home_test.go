@@ -1,4 +1,4 @@
-package app
+package actions
 
 func (as *ActionSuite) Test_HomeHandler() {
 	res := as.HTML("/").Get()
