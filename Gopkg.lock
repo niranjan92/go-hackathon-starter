@@ -100,8 +100,8 @@
 [[projects]]
   name = "github.com/gobuffalo/buffalo"
   packages = [".","binding","middleware","middleware/csrf","middleware/i18n","middleware/ssl","render","worker"]
-  revision = "bfa77a8652f7c8ec0bede640656c8add3cb230c2"
-  version = "v0.10.3"
+  revision = "932f95b2b4b7821a1b8369bd64845225ab1117b3"
+  version = "v0.11.0"
 
 [[projects]]
   branch = "master"
@@ -112,8 +112,8 @@
 [[projects]]
   name = "github.com/gobuffalo/packr"
   packages = ["."]
-  revision = "6434a292ac52e6964adebfdce3f9ce6d9f16be01"
-  version = "v1.10.4"
+  revision = "d1edcdeb0cc5f68dacccdb5b63dcb055a8b32663"
+  version = "v1.10.5"
 
 [[projects]]
   name = "github.com/gobuffalo/plush"
@@ -122,16 +122,34 @@
   version = "v3.6.10"
 
 [[projects]]
+  name = "github.com/gobuffalo/pop"
+  packages = [".","associations","columns","fizz","fizz/translators","nulls"]
+  revision = "7bebeda373c313c73e2d09164b310a6452b71c48"
+  version = "v4.2.1"
+
+[[projects]]
   name = "github.com/gobuffalo/suite"
   packages = ["."]
-  revision = "560c7accbc92c81d9e1ef59a5c3ca788f4a21bad"
-  version = "v1.0.0"
+  revision = "1390f9a650cdb0e23499c23c50e75bf98a21f728"
+  version = "v2.0.0"
 
 [[projects]]
   name = "github.com/gobuffalo/tags"
   packages = [".","form","form/bootstrap"]
   revision = "77cf9494ea2d039c420e13e4a3ca45a9cd9c59dd"
   version = "v1.9.5"
+
+[[projects]]
+  name = "github.com/gobuffalo/uuid"
+  packages = ["."]
+  revision = "3a9fb6c5c481d4886f1e9323c61ad743fb955860"
+  version = "v2.0.0"
+
+[[projects]]
+  name = "github.com/gobuffalo/validate"
+  packages = [".","validators"]
+  revision = "42d8db6e06e617cdedcc7a849d6690a2cb5a8d28"
+  version = "v2.0.0"
 
 [[projects]]
   branch = "master"
@@ -212,10 +230,10 @@
   revision = "0576708c56cea02331f864fe6e157ac7841923e4"
 
 [[projects]]
+  branch = "master"
   name = "github.com/markbates/goth"
   packages = [".","gothic","providers/facebook","providers/github","providers/twitter"]
-  revision = "bc7deaf077a50416cf3a23aa5903d2a7b5a30ada"
-  version = "v1.45.3"
+  revision = "f3fc9dc67dce1e3461e99247d756cccf09e9835d"
 
 [[projects]]
   branch = "master"
@@ -234,12 +252,6 @@
   name = "github.com/markbates/inflect"
   packages = ["."]
   revision = "80fa1ea41b0dc859816314ab0b85f07a6bc57923"
-
-[[projects]]
-  name = "github.com/markbates/pop"
-  packages = [".","associations","columns","fizz","fizz/translators","nulls"]
-  revision = "c1692defc9d64a3a16f4731d8859dd4721b7fc90"
-  version = "3.60.3"
 
 [[projects]]
   name = "github.com/markbates/refresh"
@@ -490,6 +502,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d73ed4a564a7d76cec2e261da880a0a5ebda86b808e07b969dcbb19519f11f8f"
+  inputs-digest = "7272cdc95f91e0dede498d956e00bb92ec3c4f5558cdc5c4a04a6dae2ee2313f"
   solver-name = "gps-cdcl"
   solver-version = 1

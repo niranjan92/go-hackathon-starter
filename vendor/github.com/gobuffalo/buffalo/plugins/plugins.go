@@ -20,7 +20,9 @@ import (
 type List map[string]Commands
 
 // Available plugins for the `buffalo` command.
-// It will look in $PATH and the `./plugins` directory.
+// It will look in $GOPATH/bin and the `./plugins` directory.
+// This can be changed by setting the $BUFFALO_PLUGIN_PATH
+// environment variable.
 //
 // Requirements:
 // * file/command must be executable
@@ -35,8 +37,11 @@ func Available() (List, error) {
 
 	from, err := envy.MustGet("BUFFALO_PLUGIN_PATH")
 	if err != nil {
-		logrus.Warn(warningMessage)
-		from = envy.Get("PATH", "")
+		from, err = envy.MustGet("GOPATH")
+		if err != nil {
+			return list, errors.WithStack(err)
+		}
+		from = filepath.Join(from, "bin")
 	}
 
 	if runtime.GOOS == "windows" {
@@ -111,5 +116,3 @@ func ignorePath(p string) bool {
 	}
 	return false
 }
-
-const warningMessage = `Could not find BUFFALO_PLUGIN_PATH environment variable, default to PATH instead. Consider setting the BUFFALO_PLUGIN_PATH variable to speed up loading of plugins and/or to set a custom path for locating them.`
