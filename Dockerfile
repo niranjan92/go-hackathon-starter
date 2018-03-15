@@ -2,8 +2,8 @@
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 FROM gobuffalo/buffalo:v0.10.2 as builder
 
-RUN mkdir -p $GOPATH/src/github.com/niranjan92/go_hackathon_starter
-WORKDIR $GOPATH/src/github.com/niranjan92/go_hackathon_starter
+RUN mkdir -p $GOPATH/src/github.com/niranjan92/go-hackathon-starter
+WORKDIR $GOPATH/src/github.com/niranjan92/go-hackathon-starter
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .
