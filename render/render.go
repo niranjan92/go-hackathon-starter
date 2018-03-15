@@ -12,7 +12,7 @@ var ReactR *render.Engine
 var R *render.Engine
 
 // AssetsBox ...
-var AssetsBox = packr.NewBox("../../public/assets")
+var AssetsBox = packr.NewBox("../public/assets")
 
 func init() {
 	R = render.New(render.Options{
@@ -20,7 +20,7 @@ func init() {
 		HTMLLayout: "application.html",
 
 		// Box containing all of the templates:
-		TemplatesBox: packr.NewBox("../../templates"),
+		TemplatesBox: packr.NewBox("../templates"),
 		AssetsBox:    AssetsBox,
 
 		// Add template helpers here:
@@ -32,7 +32,7 @@ func init() {
 		HTMLLayout: "application.html",
 
 		// Box containing all of the templates:
-		TemplatesBox: packr.NewBox("../../react_templates"),
+		TemplatesBox: packr.NewBox("../react_templates"),
 		AssetsBox:    AssetsBox,
 
 		// Add template helpers here:

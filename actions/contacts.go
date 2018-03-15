@@ -3,8 +3,8 @@ package actions
 import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/models"
+	"github.com/niranjan92/go-hackathon-starter/render"
 	"github.com/pkg/errors"
 )
 

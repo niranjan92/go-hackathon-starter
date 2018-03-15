@@ -6,7 +6,7 @@ import (
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/gobuffalo/buffalo"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/render"
 	"github.com/pkg/errors"
 )
 

@@ -11,9 +11,9 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 	"github.com/markbates/goth/gothic"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
 	"github.com/niranjan92/go-hackathon-starter/apiExamples"
 	"github.com/niranjan92/go-hackathon-starter/models"
+	"github.com/niranjan92/go-hackathon-starter/render"
 	// used for performance profiling
 	// _ "net/http/pprof"
 )
