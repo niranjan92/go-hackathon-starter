@@ -1,4 +1,4 @@
-package app
+package actions
 
 import (
 	"github.com/gobuffalo/buffalo"
@@ -11,9 +11,9 @@ import (
 	"github.com/gobuffalo/buffalo/middleware/i18n"
 	"github.com/gobuffalo/packr"
 	"github.com/markbates/goth/gothic"
-	"github.com/niranjan92/go-hackathon-starter/actions/apiExamples"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/apiExamples"
 	"github.com/niranjan92/go-hackathon-starter/models"
+	"github.com/niranjan92/go-hackathon-starter/render"
 	// used for performance profiling
 	// _ "net/http/pprof"
 )
@@ -61,7 +61,7 @@ func App() *buffalo.App {
 
 		// Setup and use translations:
 		var err error
-		if T, err = i18n.New(packr.NewBox("../../locales"), "en-US"); err != nil {
+		if T, err = i18n.New(packr.NewBox("../locales"), "en-US"); err != nil {
 			app.Stop(err)
 		}
 		app.Use(T.Middleware())

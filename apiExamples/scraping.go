@@ -10,7 +10,7 @@ import (
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/render"
 )
 
 // add a better crawling example

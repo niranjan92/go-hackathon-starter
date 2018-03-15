@@ -2,7 +2,7 @@ package apiExamples
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/render"
 )
 
 // APIExampleHandler is a default handler to serve up

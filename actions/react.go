@@ -1,8 +1,8 @@
-package app
+package actions
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/niranjan92/go-hackathon-starter/actions/render"
+	"github.com/niranjan92/go-hackathon-starter/render"
 )
 
 // ReactHandler is a default handler to serve up
