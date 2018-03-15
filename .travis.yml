@@ -24,6 +24,7 @@ script:
   - buffalo db create -a
   - go test ./...
   - echo "testing buffalo build"
+  - npm install
   - buffalo build
 
 notifications:
