@@ -11,7 +11,7 @@ The project is a boilerplate application in Golang and has commonly used  API ex
 When I first started out with Go, I found tons of comments online saying - just use the standard library! Now Go's standard library is one of the best one's I've seen, but it doesn't give all you need to build a full fledged web application. I tried to use go for many of side projects and found myself repeating some of the most common things like authentication, user management, lack of generators for CRUD applications etc.
 This project is heavily inspired by [hackathon starter](https://github.com/sahat/hackathon-starter) which is based on nodejs and express. Being a developer with both nodejs and Go experience, I found this missing in the Go ecosystem. This project is a step towards that direction. The focus of the project is to optimize developer speed and keep everything clean and reusable as much as possible.
 
-**Live Demo**: TODO host this
+**Live Demo**: https://go-hackathon-starter.herokuapp.com
 
 <!-- TODO: add screenshots -->
 
