@@ -13,6 +13,8 @@ This project is heavily inspired by [hackathon starter](https://github.com/sahat
 
 **Live Demo**: https://go-hackathon-starter.herokuapp.com
 
+**Slack**: https://gophers.slack.com **#go-hackathon-starter** [invite](https://gophersinvite.herokuapp.com/)
+
 <!-- TODO: add screenshots -->
 
 Working in Progress
