@@ -21,6 +21,8 @@ import (
 // ENV is used to help switch settings based on where the
 // application is being run. Default is "development".
 var ENV = envy.Get("GO_ENV", "development")
+
+// var BASE_URL = envy.Get("BASE_URL", "http://localhost:3000")
 var app *buffalo.App
 
 // T is a translator used for internationalization

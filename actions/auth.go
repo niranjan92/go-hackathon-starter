@@ -28,12 +28,15 @@ func init() {
 	}
 	var providers []goth.Provider
 
+	fmt.Println("GOT THIS: ")
+	fmt.Println(os.Getenv("BASE_URL"))
+
 	if os.Getenv("TWITTER_CONSUMER_KEY") != "" {
 		providers = append(providers,
 			twitter.New(
 				os.Getenv("TWITTER_CONSUMER_KEY"),
 				os.Getenv("TWITTER_CONSUMER_SECRET"),
-				"http://localhost:3000/auth/twitter/callback"))
+				os.Getenv("BASE_URL")+"/auth/twitter/callback"))
 	}
 
 	if os.Getenv("FACEBOOK_KEY") != "" {
@@ -41,7 +44,7 @@ func init() {
 			facebook.New(
 				os.Getenv("FACEBOOK_KEY"),
 				os.Getenv("FACEBOOK_SECRET"),
-				fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/facebook/callback")))
+				os.Getenv("BASE_URL")+"/auth/facebook/callback"))
 	}
 
 	if os.Getenv("GITHUB_KEY") != "" {
@@ -49,7 +52,7 @@ func init() {
 			github.New(
 				os.Getenv("GITHUB_KEY"),
 				os.Getenv("GITHUB_SECRET"),
-				fmt.Sprintf("%s%s", "http://localhost:3000", "/auth/github/callback")))
+				os.Getenv("BASE_URL")+"/auth/github/callback"))
 	}
 
 	goth.UseProviders(providers[:]...)
