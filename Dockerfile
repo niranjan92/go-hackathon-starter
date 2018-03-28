@@ -1,6 +1,6 @@
 # This is a multi-stage Dockerfile and requires >= Docker 17.05
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-FROM gobuffalo/buffalo:v0.10.2 as builder
+FROM gobuffalo/buffalo:v0.11.0 as builder
 
 RUN mkdir -p $GOPATH/src/github.com/niranjan92/go-hackathon-starter
 WORKDIR $GOPATH/src/github.com/niranjan92/go-hackathon-starter
@@ -10,7 +10,7 @@ ADD package.json .
 ADD yarn.lock .
 RUN yarn install --no-progress
 ADD . .
-RUN go get $(go list ./... | grep -v /vendor/)
+RUN dep ensure
 RUN buffalo build --static -o /bin/app
 
 FROM alpine

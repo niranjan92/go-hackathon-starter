@@ -137,19 +137,17 @@ Transfer/sec:      1.69MB
 Deploy
 ----------
 The project comes with a default Dockerfile which lets you build and deploy your applications with ease on [heroku](www.heroku.com). [Reference](https://devcenter.heroku.com/articles/container-registry-and-runtime) 
-
-<!-- TODO: add screenshots -->
+You can also package the application as a static binary and deploy it using buffalo. [Reference](https://gobuffalo.io/en/docs/building)
 
 Working in Progress
 -------------------
-**TODO:**
-- deploy working example to heroku with all auths working
+**Must DO:**
+- add screenshots
 - add account linking
 - FACEBOOK - show list of friends
 - add profile pic / gravatar to profile age
 - angular example with separate home page
 - react example with separate home page
-- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
 
 **Good to do:**
 - add paypal test example
