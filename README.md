@@ -15,29 +15,6 @@ This project is heavily inspired by [hackathon starter](https://github.com/sahat
 
 **Slack**: https://gophers.slack.com **#go-hackathon-starter** [invite](https://gophersinvite.herokuapp.com/)
 
-<!-- TODO: add screenshots -->
-
-Working in Progress
--------------------
-**TODO:**
-- deploy working example to heroku with all auths working
-- add account linking
-- FACEBOOK - show list of friends
-- add profile pic / gravatar to profile age
-- angular example with separate home page
-- react example with separate home page
-- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
-
-**Good to do:**
-- add paypal test example
-- fix highlighted part for selected tab in nav
-- admin management console for users
-- add a simpler way to configure db. maybe using docker compose
-- increase coverage
-
-**Maybe:**
-- add examples for angular and react
-
 Table of Contents
 -----------------
 
@@ -157,12 +134,32 @@ Requests/sec:    373.73
 Transfer/sec:      1.69MB
 ```
 
-Docker
----------
-TODO
-
 Deploy
 ----------
-TODO
+The project comes with a default Dockerfile which lets you build and deploy your applications with ease on [heroku](www.heroku.com). [Reference](https://devcenter.heroku.com/articles/container-registry-and-runtime) 
+
+<!-- TODO: add screenshots -->
+
+Working in Progress
+-------------------
+**TODO:**
+- deploy working example to heroku with all auths working
+- add account linking
+- FACEBOOK - show list of friends
+- add profile pic / gravatar to profile age
+- angular example with separate home page
+- react example with separate home page
+- Update Readme for FAQs, docker, deployment info, project structure and cheatsheets
+
+**Good to do:**
+- add paypal test example
+- fix highlighted part for selected tab in nav
+- admin management console for users
+- add a simpler way to configure db. maybe using docker compose
+- increase coverage
+
+**Maybe:**
+- add examples for angular and react
+
 
 
