@@ -51,12 +51,8 @@ git clone git@github.com:niranjan92/go-hackathon-starter
 
 cd go-hackathon-starter
 
-## run the setup script
-## currently supports macOS
-./setup.sh
 ```
-
-if script doesn't run or is unsupported, you need to do steps given below manually in the project directory
+you need to do steps given below manually in the project directory
 ```
 # install dependencies
 npm install
@@ -64,9 +60,6 @@ npm install
 ## MANUAL - find and replace imports with your directory
 ## eg. import "github.com/niranjan92/go-hackathon-starter" needs to be replaced with
 ## 	   import "github.com/<your_username>/go-hackathon-starter"
-
-# init go dependencies
-dep ensure
 
 # The first thing you need to do is open up the "database.yml" file and edit it 
 # to use the correct usernames, passwords, hosts, etc... that are appropriate for 
