@@ -70,6 +70,14 @@ func Test_Render_If_Nil(t *testing.T) {
 	r.Equal("", s)
 }
 
+func Test_Render_If_NotNil(t *testing.T) {
+	r := require.New(t)
+	input := `<%= if (!names) { %>hi<%} %>`
+	s, err := Render(input, NewContext())
+	r.NoError(err)
+	r.Equal("hi", s)
+}
+
 func Test_Render_If_Nil_Else(t *testing.T) {
 	r := require.New(t)
 	input := `<%= if (names && len(names) >= 1) { %>hi<%} else { %>something else<% } %>`
@@ -124,6 +132,32 @@ func Test_Render_If_Else_True(t *testing.T) {
 	s, err := Render(input, NewContext())
 	r.NoError(err)
 	r.Equal("<p>hi</p>", s)
+}
+
+func Test_Render_If_Else_If_Else_True(t *testing.T) {
+	r := require.New(t)
+	ctx := NewContext()
+	input := `<p><%= if (state == "foo") { %>hi foo<% } else if (state == "bar") { %>hi bar<% } else if (state == "fizz") { %>hi fizz<% } else { %>hi buzz<% } %></p>`
+
+	ctx.Set("state", "foo")
+	s, err := Render(input, ctx)
+	r.NoError(err)
+	r.Equal("<p>hi foo</p>", s)
+
+	ctx.Set("state", "bar")
+	s, err = Render(input, ctx)
+	r.NoError(err)
+	r.Equal("<p>hi bar</p>", s)
+
+	ctx.Set("state", "fizz")
+	s, err = Render(input, ctx)
+	r.NoError(err)
+	r.Equal("<p>hi fizz</p>", s)
+
+	ctx.Set("state", "buzz")
+	s, err = Render(input, ctx)
+	r.NoError(err)
+	r.Equal("<p>hi buzz</p>", s)
 }
 
 func Test_Render_If_Matches(t *testing.T) {

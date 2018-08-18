@@ -8,6 +8,22 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func Test_Name_Camel(t *testing.T) {
+	r := require.New(t)
+	table := []struct {
+		V string
+		E string
+	}{
+		{V: "foo_bar", E: "FooBar"},
+		{V: "widget", E: "Widget"},
+		{V: "User", E: "User"},
+		{V: "user_id", E: "UserID"},
+	}
+	for _, tt := range table {
+		r.Equal(tt.E, Name(tt.V).Camel())
+	}
+}
+
 func Test_Name_ParamID(t *testing.T) {
 	r := require.New(t)
 	table := []struct {
@@ -52,6 +68,8 @@ func Test_Name_Model(t *testing.T) {
 		{V: "status", E: "Status"},
 		{V: "Statuses", E: "Status"},
 		{V: "statuses", E: "Status"},
+		{V: "People", E: "Person"},
+		{V: "people", E: "Person"},
 	}
 	for _, tt := range table {
 		r.Equal(tt.E, Name(tt.V).Model())
@@ -93,7 +111,12 @@ func Test_Name_ModelPlural(t *testing.T) {
 		{V: "widgets", E: "Widgets"},
 		{V: "status", E: "Statuses"},
 		{V: "statuses", E: "Statuses"},
+		{V: "people", E: "People"},
+		{V: "person", E: "People"},
+		{V: "People", E: "People"},
+		{V: "Status", E: "Statuses"},
 	}
+
 	for _, tt := range table {
 		r.Equal(tt.E, Name(tt.V).ModelPlural())
 	}

@@ -8,6 +8,12 @@
   revision = "40e40b42552a9cb37d6e98f4ad31f63ae53ea43a"
 
 [[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
   name = "github.com/ChimeraCoder/anaconda"
   packages = ["."]
   revision = "0cb3e4c3ff8c6df5c73d5058c64e9c4eb6299c4b"
@@ -42,12 +48,6 @@
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
   version = "v1.1.0"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/daviddengcn/go-colortext"
-  packages = ["."]
-  revision = "17e75f6184bc9e727756cd0d82e0af58b1fc7191"
 
 [[projects]]
   branch = "master"
@@ -100,8 +100,8 @@
 [[projects]]
   name = "github.com/gobuffalo/buffalo"
   packages = [".","binding","middleware","middleware/csrf","middleware/i18n","middleware/ssl","render","worker"]
-  revision = "932f95b2b4b7821a1b8369bd64845225ab1117b3"
-  version = "v0.11.0"
+  revision = "354657dfd81584bb82b8b6dff9bb9f6ab22712a8"
+  version = "v0.11.1"
 
 [[projects]]
   branch = "master"
@@ -110,28 +110,46 @@
   revision = "98ac831eace185ee97a16c4e5c506d3eb8403121"
 
 [[projects]]
+  name = "github.com/gobuffalo/fizz"
+  packages = [".","translators"]
+  revision = "f57f22e853fa196e6e0048979cedba8219fa41d1"
+  version = "v1.0.8"
+
+[[projects]]
+  name = "github.com/gobuffalo/github_flavored_markdown"
+  packages = ["."]
+  revision = "6af65dcbf5386db0b8da50e160ff0fdda7ef1459"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/gobuffalo/makr"
+  packages = ["."]
+  revision = "47230b587ca04538db13185ef76cf0147f1c1f0f"
+  version = "v1.1.2"
+
+[[projects]]
   name = "github.com/gobuffalo/packr"
   packages = ["."]
-  revision = "d1edcdeb0cc5f68dacccdb5b63dcb055a8b32663"
-  version = "v1.10.5"
+  revision = "1aab5672bd385f2a7da18bffa961912e7642ea79"
+  version = "v1.13.2"
 
 [[projects]]
   name = "github.com/gobuffalo/plush"
   packages = [".","ast","lexer","parser","token"]
-  revision = "ea63b975b95e49b7af0dc7ec2369ac8c5e056548"
-  version = "v3.6.10"
+  revision = "6651ddfaf7606ecc51817185d2882617803a1878"
+  version = "v3.7.15"
 
 [[projects]]
   name = "github.com/gobuffalo/pop"
-  packages = [".","associations","columns","fizz","fizz/translators","nulls"]
-  revision = "7bebeda373c313c73e2d09164b310a6452b71c48"
-  version = "v4.2.1"
+  packages = [".","associations","columns","fix","nulls"]
+  revision = "a2bbccb0efc51bf1d71b0dd4a6626e0b1d390ce5"
+  version = "v4.6.5"
 
 [[projects]]
   name = "github.com/gobuffalo/suite"
-  packages = ["."]
-  revision = "1390f9a650cdb0e23499c23c50e75bf98a21f728"
-  version = "v2.0.0"
+  packages = [".","fix"]
+  revision = "e6be9e88b6cc632b0a239d6c613b22d5705302a8"
+  version = "v2.1.4"
 
 [[projects]]
   name = "github.com/gobuffalo/tags"
@@ -248,10 +266,10 @@
   revision = "800e180dcd16937a4cc134c6aa8c8407e62ce880"
 
 [[projects]]
-  branch = "master"
   name = "github.com/markbates/inflect"
   packages = ["."]
-  revision = "80fa1ea41b0dc859816314ab0b85f07a6bc57923"
+  revision = "dd7de90c06bca70f18136e59dec2270c19a401e7"
+  version = "v1.0.0"
 
 [[projects]]
   name = "github.com/markbates/refresh"
@@ -276,12 +294,6 @@
   name = "github.com/markbates/willie"
   packages = ["."]
   revision = "1eede1f49c9648490dcabd7828c2f39b560e7040"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/mattn/anko"
-  packages = ["ast","builtins","builtins/encoding/json","builtins/errors","builtins/flag","builtins/fmt","builtins/github.com/daviddengcn/go-colortext","builtins/io","builtins/io/ioutil","builtins/math","builtins/math/big","builtins/math/rand","builtins/net","builtins/net/http","builtins/net/url","builtins/os","builtins/os/exec","builtins/os/signal","builtins/path","builtins/path/filepath","builtins/regexp","builtins/runtime","builtins/sort","builtins/strconv","builtins/strings","builtins/time","parser","vm"]
-  revision = "d5441ca3f0c7e071a9ede864f9db2cc652690f42"
 
 [[projects]]
   name = "github.com/mattn/go-colorable"
@@ -411,6 +423,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/shurcooL/octicon"
+  packages = ["."]
+  revision = "c42b0e3b24d96976ecac81ef691662777b39ef64"
+
+[[projects]]
+  branch = "master"
   name = "github.com/shurcooL/octiconssvg"
   packages = ["."]
   revision = "91d14858bf8188ba5143d67a3a677ea559000b0a"
@@ -492,6 +510,12 @@
   packages = ["internal","internal/base","internal/datastore","internal/log","internal/remote_api","internal/urlfetch","urlfetch"]
   revision = "150dc57a1b433e64154302bdc40b6bb8aefa313a"
   version = "v1.0.0"
+
+[[projects]]
+  name = "gopkg.in/russross/blackfriday.v1"
+  packages = ["."]
+  revision = "55d61fa8aa702f59229e6cff85793c22e580eaf5"
+  version = "v1.5.1"
 
 [[projects]]
   branch = "v2"

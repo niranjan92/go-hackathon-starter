@@ -17,6 +17,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/pflag"
 
+	"github.com/gobuffalo/fizz"
 	"github.com/gobuffalo/pop"
 	"github.com/markbates/going/defaults"
 	"github.com/markbates/inflect"
@@ -61,7 +62,7 @@ func (m model) testPkgName() string {
 	pkg := m.Package
 
 	path, _ := os.Getwd()
-	path = filepath.Join("models")
+	path = filepath.Join(path, "models")
 
 	if _, err := os.Stat(path); err != nil {
 		return pkg
@@ -139,26 +140,29 @@ func (m model) generateModelFile() error {
 		return errors.Wrapf(err, "couldn't create folder %s", m.Package)
 	}
 
-	err = m.Generate()
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return m.Generate()
 }
 
 func (m model) generateFizz(cflag *pflag.Flag) error {
 	migrationPath := defaults.String(cflag.Value.String(), "./migrations")
-	err := pop.MigrationCreate(migrationPath, fmt.Sprintf("create_%s", m.Name.Table()), "fizz", []byte(m.Fizz()), []byte(fmt.Sprintf("drop_table(\"%s\")", m.Name.Table())))
+	return pop.MigrationCreate(migrationPath, fmt.Sprintf("create_%s", m.Name.Table()), "fizz", []byte(m.Fizz()), []byte(m.UnFizz()))
+}
+
+func (m model) generateSQL(pathFlag, envFlag *pflag.Flag) error {
+	migrationPath := defaults.String(pathFlag.Value.String(), "./migrations")
+
+	env := envFlag.Value.String()
+	db, err := pop.Connect(env)
 	if err != nil {
 		return err
 	}
 
-	return nil
+	return pop.MigrationCreate(migrationPath, fmt.Sprintf("create_%s.%s", m.Name.Table(), db.Dialect.Name()), "sql", []byte(m.GenerateSQLFromFizz(m.Fizz(), db)), []byte(m.GenerateSQLFromFizz(m.UnFizz(), db)))
 }
 
+// Fizz generates the create table instructions
 func (m model) Fizz() string {
-	s := []string{fmt.Sprintf("create_table(\"%s\", func(t) {", m.Name.Table())}
+	s := []string{fmt.Sprintf("create_table(\"%s\") {", m.Name.Table())}
 	for _, a := range m.Attributes {
 		switch a.Name {
 		case "created_at", "updated_at":
@@ -172,8 +176,22 @@ func (m model) Fizz() string {
 			s = append(s, x)
 		}
 	}
-	s = append(s, "})")
+	s = append(s, "}")
 	return strings.Join(s, "\n")
+}
+
+// UnFizz generates the drop table instructions
+func (m model) UnFizz() string {
+	return fmt.Sprintf("drop_table(\"%s\")", m.Name.Table())
+}
+
+// GenerateSQLFromFizz generates SQL instructions from fizz instructions
+func (m model) GenerateSQLFromFizz(content string, c *pop.Connection) string {
+	content, err := fizz.AString(content, c.Dialect.FizzTranslator())
+	if err != nil {
+		return ""
+	}
+	return content
 }
 
 func newModel(name string) model {
@@ -210,6 +228,8 @@ func fizzColType(s string) string {
 		return "jsonb"
 	case "float32", "float64", "float":
 		return "decimal"
+	case "blob", "[]byte":
+		return "blob"
 	default:
 		if nrx.MatchString(s) {
 			return fizzColType(strings.Replace(s, "nulls.", "", -1))

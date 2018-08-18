@@ -34,6 +34,14 @@ func Test_Attribute_String(t *testing.T) {
 			name: "user-id",
 			exp:  "\tUserID string `json:\"user_id\" db:\"user_id\"`",
 		},
+		{
+			name: "expires",
+			exp:  "\tExpires string `json:\"expires\" db:\"expires\"`",
+		},
+		{
+			name: "message_headers",
+			exp:  "\tMessageHeaders string `json:\"message_headers\" db:\"message_headers\"`",
+		},
 	}
 
 	for _, c := range cases {
@@ -44,7 +52,6 @@ func Test_Attribute_String(t *testing.T) {
 }
 
 func Test_newAttribute(t *testing.T) {
-	r := require.New(t)
 	cases := []struct {
 		AttributeInput string
 		ResultType     string
@@ -83,10 +90,27 @@ func Test_newAttribute(t *testing.T) {
 			ResultType:     "slices.Float",
 			ModelHasSlices: true,
 		},
+		{
+			AttributeInput: "raw:blob",
+			ResultType:     "[]byte",
+		},
+		{
+			AttributeInput: "raw:[]byte",
+			ResultType:     "[]byte",
+		},
+		{
+			AttributeInput: "age:int",
+			ResultType:     "int",
+		},
+		{
+			AttributeInput: "age:int:int64",
+			ResultType:     "int64",
+		},
 	}
 
 	for index, tcase := range cases {
-		t.Run(fmt.Sprint(index), func(tt *testing.T) {
+		t.Run(fmt.Sprintf("%d-%s", index, tcase.AttributeInput), func(tt *testing.T) {
+			r := require.New(tt)
 			model := newModel("car")
 			a := newAttribute(tcase.AttributeInput, &model)
 
