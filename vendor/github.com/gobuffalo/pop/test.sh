@@ -16,6 +16,8 @@ sleep 4 # Ensure mysql is online
 
 go build -v -tags sqlite -o tsoda ./soda
 
+export GO111MODULE=on
+
 function test {
   echo "!!! Testing $1"
   export SODA_DIALECT=$1
@@ -34,4 +36,4 @@ test "sqlite"
 docker-compose down
 
 rm tsoda
-find . -name *.sqlite* -delete
+find ./sql_scripts/sqlite -name *.sqlite* -delete

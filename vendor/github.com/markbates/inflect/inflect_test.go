@@ -96,6 +96,9 @@ var CapitalizeMixture = map[string]string{
 	"applicationController": "ApplicationController",
 	"Area51Controller":      "Area51Controller",
 	"id":                    "ID",
+	"SQL":                   "SQL",
+	"sql":                   "SQL",
+	"sQL":                   "SQL",
 }
 
 var CamelToUnderscore = map[string]string{
@@ -377,7 +380,7 @@ func TestSingularizePlural(t *testing.T) {
 }
 
 func TestSingularizeSingular(t *testing.T) {
-	for singular, _ := range SingularToPlural {
+	for singular := range SingularToPlural {
 		require.Equal(t, singular, Singularize(singular))
 		require.Equal(t, Capitalize(singular), Capitalize(Singularize(singular)))
 	}

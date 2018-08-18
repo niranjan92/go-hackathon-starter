@@ -42,28 +42,6 @@ func Test_Box_Has(t *testing.T) {
 	r.False(testBox.Has("idontexist.txt"))
 }
 
-func Test_Box_Walk_Physical(t *testing.T) {
-	r := require.New(t)
-	count := 0
-	err := testBox.Walk(func(path string, f File) error {
-		count++
-		return nil
-	})
-	r.NoError(err)
-	r.Equal(3, count)
-}
-
-func Test_Box_Walk_Virtual(t *testing.T) {
-	r := require.New(t)
-	count := 0
-	err := virtualBox.Walk(func(path string, f File) error {
-		count++
-		return nil
-	})
-	r.NoError(err)
-	r.Equal(4, count)
-}
-
 func Test_List_Virtual(t *testing.T) {
 	r := require.New(t)
 	mustHave := []string{"a", "b", "c", "d/a"}
@@ -74,7 +52,7 @@ func Test_List_Virtual(t *testing.T) {
 
 func Test_List_Physical(t *testing.T) {
 	r := require.New(t)
-	mustHave := []string{"goodbye.txt", "hello.txt", "index.html"}
+	mustHave := osPaths("foo/a.txt", "foo/bar/b.txt", "goodbye.txt", "hello.txt", "index.html")
 	actual := testBox.List()
 	r.Equal(mustHave, actual)
 }
@@ -122,4 +100,30 @@ func Test_Virtual_Directory_Not_Found(t *testing.T) {
 	r.NoError(err)
 	_, err = virtualBox.find("does-not-exist")
 	r.Error(err)
+}
+
+func Test_AddString(t *testing.T) {
+	r := require.New(t)
+
+	_, err := virtualBox.find("string")
+	r.Error(err)
+
+	virtualBox.AddString("string", "hello")
+
+	_, err = virtualBox.find("string")
+	r.NoError(err)
+	r.Equal("hello", virtualBox.String("string"))
+}
+
+func Test_AddBytes(t *testing.T) {
+	r := require.New(t)
+
+	_, err := virtualBox.find("bytes")
+	r.Error(err)
+
+	virtualBox.AddBytes("bytes", []byte("hello"))
+
+	_, err = virtualBox.find("bytes")
+	r.NoError(err)
+	r.Equal("hello", virtualBox.String("bytes"))
 }
