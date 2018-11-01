@@ -13,7 +13,9 @@ install:
   - ls -al 
 
 script:
-  - go get -u -v github.com/gobuffalo/buffalo/buffalo
+  - wget https://github.com/gobuffalo/buffalo/releases/download/v0.13.2/buffalo_0.13.2_linux_amd64.tar.gz
+  - tar -xvzf buffalo_0.13.2_linux_amd64.tar.gz
+  - sudo mv buffalo-no-sqlite /usr/local/bin/buffalo
   - ls -al $GOPATH/bin
   - buffalo version
   - buffalo db create -a
