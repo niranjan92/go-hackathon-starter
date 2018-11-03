@@ -17,6 +17,9 @@ script:
   - tar -xvzf buffalo_0.13.2_linux_amd64.tar.gz
   - sudo mv buffalo-no-sqlite /usr/local/bin/buffalo
   - ls -al $GOPATH/bin
+  - cd /tmp
+  - buffalo new dummy
+  - cd -
   - buffalo version
   - buffalo db create -a
   - go test ./...
