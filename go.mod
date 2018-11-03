@@ -20,17 +20,19 @@ require (
 	github.com/gobuffalo/buffalo v0.13.2
 	github.com/gobuffalo/buffalo-pop v1.1.8
 	github.com/gobuffalo/envy v1.6.7
-	github.com/gobuffalo/fizz v1.0.15
+	github.com/gobuffalo/fizz v1.0.16
 	github.com/gobuffalo/github_flavored_markdown v1.0.7
 	github.com/gobuffalo/makr v1.1.5
 	github.com/gobuffalo/mw-csrf v0.0.0-20180802151833-446ff26e108b
 	github.com/gobuffalo/mw-forcessl v0.0.0-20180802152810-73921ae7a130
 	github.com/gobuffalo/mw-i18n v0.0.0-20181027200759-09e0c99be4d3
 	github.com/gobuffalo/mw-paramlogger v0.0.0-20181005191442-d6ee392ec72e
-	github.com/gobuffalo/packr v1.16.0
-	github.com/gobuffalo/plush v3.7.21+incompatible
-	github.com/gobuffalo/pop v4.8.7+incompatible
-	github.com/gobuffalo/suite v0.0.0-20180814225827-e6be9e88b6cc
+	github.com/gobuffalo/packd v0.0.0-20181031195726-c82734870264 // indirect
+	github.com/gobuffalo/packr v1.17.0
+	github.com/gobuffalo/plush v3.7.22+incompatible
+	github.com/gobuffalo/pop v4.8.8+incompatible
+	github.com/gobuffalo/release v1.0.60 // indirect
+	github.com/gobuffalo/suite v2.2.0+incompatible
 	github.com/gobuffalo/tags v2.0.11+incompatible
 	github.com/gobuffalo/uuid v2.0.5+incompatible
 	github.com/gobuffalo/validate v2.0.3+incompatible
@@ -79,18 +81,19 @@ require (
 	github.com/shurcooL/octicon v0.0.0-20180602230221-c42b0e3b24d9
 	github.com/shurcooL/octiconssvg v0.0.0-20180217052449-91d14858bf81
 	github.com/shurcooL/sanitized_anchor_name v0.0.0-20170918181015-86672fcb3f95
-	github.com/sirupsen/logrus v1.1.1
+	github.com/sirupsen/logrus v1.2.0
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e
 	github.com/stretchr/testify v1.2.2
 	github.com/unrolled/secure v0.0.0-20181022170031-4b6b7cf51606
 	github.com/yhat/scrape v0.0.0-20161128144610-24b7890b0945
 	golang.org/x/crypto v0.0.0-20181030102418-4d3f4d9ffa16
-	golang.org/x/net v0.0.0-20181029044818-c44066c5c816
+	golang.org/x/net v0.0.0-20181102091132-c10e9556a7bc
 	golang.org/x/oauth2 v0.0.0-20180207181906-543e37812f10
 	golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
-	golang.org/x/sys v0.0.0-20181030150119-7e31e0c00fa0
-	google.golang.org/appengine v1.2.0
+	golang.org/x/sys v0.0.0-20181031143558-9b800f95dbbc
+	golang.org/x/tools v0.0.0-20181102223251-96e9e165b75e // indirect
+	google.golang.org/appengine v1.3.0
 	gopkg.in/russross/blackfriday.v1 v1.5.1
 	gopkg.in/yaml.v2 v2.2.1
 )
