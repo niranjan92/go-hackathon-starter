@@ -1,26 +1,26 @@
 language: go
 
 go:
-  - 1.9.x
-  - "1.10.x"
+  - 1.11.x
 
 env:
-  - DEP_VERSION="0.4.1"
-
-before_install:
-  - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
-  - chmod +x $GOPATH/bin/dep
+  - GO111MODULE=on
 
 services:
   - postgresql
 
 install:
   - ls -al 
-  - dep ensure
 
 script:
-  - go get -u -v github.com/gobuffalo/buffalo/buffalo
+  - wget https://github.com/gobuffalo/buffalo/releases/download/v0.13.2/buffalo_0.13.2_linux_amd64.tar.gz
+  - tar -xvzf buffalo_0.13.2_linux_amd64.tar.gz
+  - sudo mv buffalo-no-sqlite /usr/local/bin/buffalo
   - ls -al $GOPATH/bin
+  - cd /tmp
+  - buffalo new dummy
+  - cd -
+  - buffalo version
   - buffalo db create -a
   - go test ./...
   - echo "testing buffalo build"

@@ -3,7 +3,7 @@ checks:
 
 build:
     environment:
-        go: go1.9.2
+        go: go1.11
     nodes:
         analysis:
             tests:
